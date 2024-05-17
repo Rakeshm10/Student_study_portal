@@ -1,0 +1,47 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% load crispy_forms_tags %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<section class='text-center container mt-5'>
+    <h3 class="mb-4" style="font-family: 'YourHeadingFont', sans-serif; font-size: 2.5rem; color: #000;">Search Videos on YouTube</h3>
+    <p class="text-muted" style="font-family: 'YourFont', sans-serif; font-size: 1.2rem; color: #999;">Search videos and select any video to open in YouTube</p>
+
+    <form action="" method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form }}
+        <button class="btn btn-danger" type="submit">Search</button>
+    </form>
+
+    <div class="row mt-3">
+        {% for result in results %}
+        <div class="col-sm-4 mb-4">
+            <a href="{{ result.link }}" target="_blank" class="text-decoration-none text-dark">
+                <div class="card h-100">
+                    <img src="{{ result.thumbnail }}" class="card-img-top" alt="{{ result.title }}">
+                    <div class="card-body">
+                        <h6 class="card-title custom-title">{{ result.title }}</h6>
+                        <h6 class="card-text custom-description">{{ result.description }}</h6>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>channel name: {{ result.channel   }} ,  </strong>
+                          <strong>  <span class="ml-2">Duration: {{ result.duration   }}, Views: {{ result.views   }}</span> </strong>
+                        </li>
+                        <li class="list-group-item custom-published">Published: {{ result.published }}</li>
+                    </ul>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}
+
+
+
+
+

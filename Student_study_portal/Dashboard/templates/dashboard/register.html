@@ -1,0 +1,77 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<style>
+  .container {
+    max-width: 920px;
+    margin: auto;
+    padding: 20px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+    margin-top: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .btn-outline-info {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+
+  .btn-outline-info:hover {
+    background-color: #117a9b;
+  }
+
+  .text-muted {
+    color: #;
+  }
+  .form-group.button-group {
+    text-align: center;
+  }
+
+  .center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .center-text {
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <img src="{% static 'images/logo1.png' %}" alt="Banner" class="img-fluid mb-4 center-image" style="width: 500px; height: 100px;">
+
+  <form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <strong><legend class="border-bottom mb-4 center-text">Welcome</legend></strong>
+    </fieldset>
+    {{ form| crispy }} 
+    <div class="form-group button-group">
+      <button class="btn btn-success" type="submit">
+        Register
+      </button>
+    </div>
+  </form>
+  <div class="border-top pt-3 center-text">
+    <small>Already have an account?
+      <strong><a class="ml-2" href="{% url 'login' %}">Log In</a></strong>
+    </small>
+  </div>
+</div> 
+
+ {% endblock content %} 
+
+ 
+
+
+
+
+

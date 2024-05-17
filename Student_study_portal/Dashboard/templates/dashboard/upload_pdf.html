@@ -1,0 +1,37 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4 text-primary">Upload PDF for Assignment "{{ assignment.title }}"</h2>
+
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form}}
+                <button type="submit" class="btn btn-primary mt-3">Upload PDF</button>
+            </form>
+
+            <a href="{% url 'assignments_list' %}" class="btn btn-secondary mt-3">Back to Assignment List</a>
+
+            <br>
+            <hr>
+            <br>
+
+            {% if assignment.file_field %}
+                <h2 class='text-danger'>Uploaded Files:</h2>
+                <ul>
+                    <li>
+                        <a href="{{ assignment.file_field.url }}" target="_blank">{{ assignment.file_field.name }}</a>
+                    </li>
+                    <!-- Add more styling or information as needed -->
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

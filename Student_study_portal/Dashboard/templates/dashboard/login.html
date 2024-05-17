@@ -1,0 +1,36 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row align-items-center min-vh-100">
+    <div class="col-md-7 mx-auto">
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+      <strong>    <legend class="border-bottom mb-4">Log In</legend></strong>
+          {{ form.as_p }}
+        </fieldset>
+        <div class="form-group text-left">
+          <button class="btn btn-outline-info" type="submit">
+            Log In
+          </button>
+        </div>
+      </form>
+      <div class="border-top pt-3 text-left">
+        <small class="text-muted">Need an Account?
+      <strong>    <a class="ml-2" href="{% url 'register' %}">Create an Account</a></strong>
+        </small>
+      </div>
+    </div>
+    <!-- Add the following column for the image -->
+    <div class="col-md-5">
+      <img src="{% static 'images/login.png' %}" alt="Image"  style="width: 530px; height: 580px;">
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+

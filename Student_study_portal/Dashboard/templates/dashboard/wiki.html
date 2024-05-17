@@ -1,0 +1,88 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class='text-center container'>
+    <h2>Search articles on Wikipedia</h2>
+    <img src="{% static 'images/wikipediaa.png' %}" alt="Banner" style="width: 400px; height: 300px;" class="mx-auto d-block">
+    <br>
+    <br>
+
+    <form action="{% url 'wikipedia' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-danger" type="submit" value="Submit">
+    </form>
+
+    {% if options %}
+        <h3>Disambiguation Options:</h3>
+        <ul>
+            {% for option in options %}
+                <li><a href="{% url 'choose_option' option %}">{{ option }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if error_message %}
+        <p class="text-danger">{{ error_message }}</p>
+    {% endif %}
+
+    {% if title %}
+        <div class="container mt-4">
+            <div class="custom-header">
+                <h2>{{ title }}</h2>
+                <h6><a href="{{ link }}" target="_blank">{{ link }}</a></h6>
+            </div>
+            <hr>
+            <b>
+                <p class="description m-3" style="font-size: 14px; line-height: 1.6; max-height: 400px; overflow: hidden; position: relative;">
+                    {{ details }}
+                </p>
+            </b>
+        </div>
+    {% endif %}
+
+    <!-- Additional Styles -->
+    <style>
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .custom-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h2, h6 {
+            color: #dc3545;
+        }
+
+        .description {
+            color: #6c757d;
+        }
+
+        .description::after {
+            content: "";
+            display: block;
+            border-bottom: 1px solid #6c757d; /* Line color */
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            margin-bottom: 10px; /* Adjust as needed */
+        }
+
+        /* Add more styles as needed */
+    </style>
+
+</section>
+
+{% endblock content %}
+
+
+
+
+

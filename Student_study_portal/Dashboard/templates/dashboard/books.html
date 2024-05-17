@@ -1,0 +1,74 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+<br>
+<br>
+<br>
+<section class='text-center container'>
+    <h2>Search E-books</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input class="btn btn-danger" type="submit" value="Submit">
+    </form><br>
+
+    <div class="row mt-3">
+        {% for result in results %}
+            <div class="col-sm-4 mb-4">
+            <strong>    <a href="{{ result.preview }}" target="_blank"></strong>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <img class="img-fluid" src="{{ result.thumbnail }}" alt="">
+                                </div>
+                                <br>
+                                <hr>
+                                <div class="col-md-12">
+                                <strong>    <h2 class="p-0 m-0 text-danger">{{ result.title }}</h2></strong><br><hr>
+                                   
+                                    {% if result.description %}
+                                        <h6 class="p-0 m-1 text-primary">{{ result.description | truncatewords:30 }}</h6>
+                                        
+                                        <div id="description{{ forloop.counter }}" class="collapse">
+                                            <p>{{ result.description }}</p>
+                                        </div>
+                                    {% endif %}
+
+                                    {% if result.categories %}
+                                    <strong>
+                                         
+                                            <h6 class="ml-0 mt-3 text-danger">Category:
+                                                {% for category in result.categories %}
+                                                    {{ category }}
+                                                    {% if not forloop.last %}, {% endif %}
+                                                {% endfor %}
+                                            </h6>
+                                        
+                                    </strong>
+                                    {% endif %}
+                                        <br><hr>
+                                    {% if result.count %}
+                                        <h6 class="ml-0 mt-1 text-success">Pages: {{ result.count }}</h6>
+                                    {% endif %}
+
+                                    {% if result.rating %}
+                                        <h6 class="ml-0 mt-1">Rating: {{ result.rating }}</h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+
+</section>
+
+{% endblock content %}
+
+
+
+
+

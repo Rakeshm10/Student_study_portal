@@ -1,0 +1,25 @@
+<!-- choose_option.html -->
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+
+{% block content %}
+
+<section class='text-center container'>
+    <h2>Choose an option</h2>
+    <ul>
+        {% for option in options %}
+            <li><a href="{% url 'choose_option' option %}">{{ option }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% if form %}
+        <form action="{% url 'wikipedia' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input class="btn btn-danger" type="submit" value="Submit">
+        </form>
+    {% endif %}
+
+</section>
+
+{% endblock content %}

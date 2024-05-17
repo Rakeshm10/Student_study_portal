@@ -1,0 +1,144 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %} 
+{% block content %}
+
+<strong><section class="container text-center text-primary"></strong>
+
+
+
+  <hr> <br>
+  <img src="{% static 'images/dashboard.jpeg' %}" alt="Dashboard Banner" class="img-fluid mb-4 mx-auto" style="width: 830px; height: 150px;">
+
+  <hr> <br>
+
+  <div class="row">
+    <div class="col-md-4">
+      <a href="{% url 'notes' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/notes1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger">
+              Create Notes
+            </h2>
+            <h6 class="card-title text-primary">  Create Notes to refer them later. They are stored permanently until deleted</h6>
+          </div>
+        </div>
+      </a>
+    </div>  
+
+    <div class="col-md-4">
+      <a href="{% url 'assignments_list' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/homework.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger">
+               Assignments
+            </h2>
+            <h6 class="card-title text-primary">   Empowers students to create their own assignments or study tasks for personal assessment.    </h6>               
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'youtube' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/youtube1.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger">
+              Youtube
+            </h2>
+            <h6 class="card-title text-primary"> Search Youtube and select your desired video to play it on youtube</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+    <br><br><br><br>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <a href="{% url 'todo' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/todo.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger">
+              Schedule
+            </h2>
+            <h6 class="card-title text-primary">  Manage your daily schedule by adding tasks.</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <div class="col-md-4 ">
+      <a href="{% url 'books' %}">
+        <div class="card mt-20">
+          <img class="card-img-top" src="{% static 'images/ebooks.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger ">
+              E-Books
+            </h2>
+            <h6 class="card-title text-primary">   Browse E-books from a list of neatly organised book menu</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+    <div class="col-md-4">
+      <a href="{% url 'wikipedia' %}">
+        <div class="card mt-20">
+          <img class="card-img-top" src="{% static 'images/wikipedia.jpg' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger ">
+              Google Wikipedia
+            </h2>
+            <h6 class="card-title text-primary">  Search any topic in wikipedia to get fast results</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+    <br><br><br>
+    
+  <div class="row">
+    <div class="col-md-4">
+      <a href="{% url 'chat' %}">
+        <div class="card">
+          <img class="card-img-top" src="{% static 'images/chat.png' %}" alt="Notes image">
+          <div class="card-body">
+            <h2 class="card-title text-danger">
+              Chat
+            </h2>
+            <h6 class="card-title text-primary">  chat with group members.</h6>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+  </div> 
+
+  
+
+
+  <br>
+  <hr> <br>
+  <br>
+  <aside class="text-center pr-4">
+    <section>
+       <strong><h2 class="text-success">Contact  Us</h2> </strong><br>
+      <p><strong> Name :</strong> Rakesh M</p>
+      <p><strong> Email :</strong> methkurakesh@gmail.com</p>
+      <p><strong> phone No :</strong> 9900394373</p>
+
+    </section>
+  </aside>
+
+
+
+</section>
+{% endblock content %} 
+
